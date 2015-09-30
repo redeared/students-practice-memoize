@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>slimerjs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/vendor.css"/>
+    <script src="../js/vendor.js"></script>
+    <script>
+        mocha.setup("bdd");
+        window.onload = function () {
+            mocha.run();
+        };
+    </script>
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="js/memoize.spec.js"></script>
+</body>
+</html>
