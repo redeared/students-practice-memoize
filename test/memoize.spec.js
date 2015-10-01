@@ -6,8 +6,10 @@ let expect = chai.expect;
 
 describe("Memoized function", function () {
     
-    function abs(re, im) {
-        return Math.round(Math.sqrt(re * re + im * im));
+    function abs() {
+        let xs = [...arguments];
+        let power = xs.map(x => x * x).reduce((sum, x) => sum + x);
+        return Math.round(Math.sqrt(power));
     }
 
     var absSpy;
@@ -19,25 +21,35 @@ describe("Memoized function", function () {
     });
 
     it("should delegate calls to target function", function() {
-        expect(memoizedAbs(1, 0)).to.equal(1);
-        expect(absSpy).to.have.been.called.with(1, 0);
-        expect(memoizedAbs(4, 3)).to.equal(5);
-        expect(absSpy).to.have.been.called.with(4, 3);
+        expect(memoizedAbs(0, 1)).to.equal(1);
+        expect(memoizedAbs(3, 4)).to.equal(5);
     });
 
-    it("should return correct values in case of the consequent calls", function() {
-        expect(memoizedAbs(4, 3)).to.equal(5);
-        expect(memoizedAbs(4, 3)).to.equal(5);
+    it("should return correct values in case of the consequent calls with identical arguments", function() {
+        for (var i = 0; i < 2; i++) {
+            expect(memoizedAbs(3, 4)).to.equal(5);
+        }
     });
 
     it("should cache results of the consequent calls with identical arguments", function() {
-        memoizedAbs(4, 3); // first call
-        memoizedAbs(0, 1);
-        expect(absSpy).to.have.been.called.with(4, 3);
-        expect(absSpy).to.have.been.called.with(0, 1);
+        const ARGS0 = [3, 4],
+              ARGS1 = [3, 5];
+
+        memoizedAbs(...ARGS0); // first call
+        expect(absSpy).to.have.been.called.with(...ARGS0);
+        memoizedAbs(...ARGS1);
+        expect(absSpy).to.have.been.called.with(...ARGS1);
         expect(absSpy).to.have.been.called.twice();
+
         absSpy.reset();
-        memoizedAbs(4, 3); // second call
+        memoizedAbs(...ARGS0); // second call
         expect(absSpy).to.not.have.been.called();
+    });
+
+    it("should use all arguments to compute cache key", function() {
+        for (var i = 0; i < 2; i++) {
+            memoizedAbs(1, 2, 3, 4, 5);
+        }
+        expect(absSpy).to.have.been.called.once();
     });
 });
