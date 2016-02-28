@@ -1,20 +1,22 @@
-# Students JavaScript Practice
+# JavaScript Practice
 
 ## Purpose
 
 This practice covers the following:
+
 1. *Function* as *First Citizen*.
 2. *ES6* features.
 3. *BDD* with *Mocha* and *Chai*.
 4. *NPM* infrastructure.
 
-## Memoize Function
+## Memoize
 
 ### Overview
 
 Memoize function idea has been taken from [Lodash](https://lodash.com/docs#memoize).
 Please take a look to the original [specification](https://lodash.com/docs#memoize).
 Then study the differences list:
+
 1. Cache key generation strategy is not customizable. *Resolver* support is **not** necessary.
 2. All arguments should be considered by caching mechanism. **Not** only the first argument.
 
