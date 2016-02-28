@@ -1,32 +1,6 @@
-*.sublime-*
-
-# NetBeans specific
-nbproject/
-build/
-nbbuild/
-# dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-configurations.xml
-project.xml
-.dep.inc
-Makefile
-manifest.mf
-build.xml
-master-application.jnlp
-preview-application.html
-
-# Exceptions
-!/stuff
-!/stuff/**
-/nbproject/private/
-
-# NPM
+# NPM specific
 node_modules/
+*.log
 
-# Bower
-bower_components/
-
+# Project specific
 temp/
-dist/

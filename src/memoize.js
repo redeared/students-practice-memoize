@@ -1,5 +1,5 @@
 export { memoize };
 
 function memoize(func) {
-    return func; // TODO
+	return func; // TODO
 }
