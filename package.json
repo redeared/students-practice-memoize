@@ -13,7 +13,7 @@
     "memoize"
   ],
   "scripts": {
-    "test": "npm-run-all lint karma",
+    "test": "npm run lint && npm run karma",
     "lint": "eslint src test",
     "karma": "karma start karma.conf.js"
   },
@@ -32,7 +32,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.5.0",
     "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
+    "browserify": "^12.0.0",
     "browserify-hmr": "^0.3.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.2.0",
@@ -50,8 +50,6 @@
     "karma-mocha": "^0.2.1",
     "karma-mocha-reporter": "^1.1.5",
     "mocha": "^2.4.5",
-    "npm-run-all": "^1.5.1",
-    "proxyquireify": "^3.1.1",
     "watchify": "^3.7.0"
   },
   "browser": {
