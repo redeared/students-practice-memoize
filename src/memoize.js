@@ -20,10 +20,10 @@ function memoize(func) {
 
 function generateKey(args) {
 	var key = 0;
-	var arr = Array.prototype.slice.call(args);
+	var arr = [...args];
 
 	arr.forEach(function (elem, index, array) {
-		key += elem + index;
+		key += typeof elem + elem + index;
 	});
 
 	return key;
